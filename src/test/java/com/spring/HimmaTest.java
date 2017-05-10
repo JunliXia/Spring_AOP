@@ -18,7 +18,7 @@ public class HimmaTest extends TestCase {
 	}
 	
 	@Test
-	public void testHimma(){
+	public void testBeforeAfter(){
 		People himma = (People) applicationContext.getBean("himma");
 		himma.doWorking();
 	}

@@ -7,17 +7,27 @@
 	http://www.springframework.org/schema/aop 
 	http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
 	
-	
+	<!-- 声明前置与后置通知 -->
+
 	<aop:config>
         <aop:aspect ref="supervisor">
         	<aop:pointcut id="working" expression="execution(* com.spring.xml.Himma.doWorking(..))" />
-        	
         	<aop:before pointcut-ref="working" method="startWork"/>
         	<aop:after-returning pointcut-ref="working" method="endWork"/>
         	<aop:after-throwing pointcut-ref="working" method="mistake"/>
         </aop:aspect>
-    
 	</aop:config>
+	
+	   
+	<!-- 声明环绕通知 -->
+	<!--
+	<aop:config>
+		<aop:aspect ref="supervisor">
+			<aop:pointcut id="workingAround" expression="execution(* com.spring.xml.Himma.doWorking(..))"/>
+			<aop:around pointcut-ref="workingAround" method="aroundWorking" />
+		</aop:aspect>
+	</aop:config>
+	-->
 	
 	<bean id="supervisor" class="com.spring.xml.Supervisor"></bean>
 	<bean id="himma" class="com.spring.xml.Himma"></bean>
